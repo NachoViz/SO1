@@ -1,18 +1,18 @@
-#Notas clase 6
-##Soportes de la Memoria Virtual
+# Notas clase 6
+## Soportes de la Memoria Virtual
 
 1. Si durante la ejecución se hace referencia a una página
 que no está en la memoria entonces el hardware genera
 una interrupción de fallo de memoria
 
-##Buffer de Traducción Adelantada
+## Buffer de Traducción Adelantada
 1. Cada referencia a memoria puede generar dos accesos
 consecutivos a memoria
 ▶ El primero para obtener la entrada de la tabla de páginas
 ▶ El segundo para obtener el dato que se necesita
 2. Si no encuentra la direccion virtual en la memoria principal va a la secundaria
 
-##Cual es el tamaño correcto de la página?
+## Cual es el tamaño correcto de la página?
 ▶Reducir el tamaño de la página incrementa el número de
 páginas por proceso, lo que a su vez incrementa el tamaño
 de las tablas de página
@@ -24,13 +24,13 @@ ellas no se encuentren siempre en memoria
         x86-64      4KiB 1GiB
 	ARMv7       4KiB 16MiB
 
-##Segmentación
+## Segmentación
 ▶ La segmentación permite al programador ver la memoria
 dividida en múltiples espacios de direcciones o segmentos
 ▶ Los segmentos pueden cambiar de tamaño de manera
 dinámica
 
-##Segmentación y Paginación
+## Segmentación y Paginación
 ▶ El espacio de direcciones es dividido en segmentos a
 conveniencia del programador
 ▶ A su vez cada segmento es dividido en páginas
@@ -39,7 +39,7 @@ ocupará una página completa
 ▶ El sistema combina ambos métodos de división para
 direccionar la memoria
 
-##Políticas de Ubicación y Reemplazo
+## Políticas de Ubicación y Reemplazo
 ▶ La política de reemplazo debe decidir que página
 reemplazar cuando toda la memoria esta ocupada y hay
 que cargar una nueva página
@@ -54,13 +54,13 @@ aquellas páginas que no han sido referenciadas desde
 hace tiempo son aquellas con menor probabilidad de ser
 referenciadas en el futuro
 
-###Algoritmos mas comunes utilizados
+### Algoritmos mas comunes utilizados
 1. Óptimo -> no funciona
 2. Usado menos recientemente (LRU) -> costosa y dificil de impl.
 3. FIFO  -> menos costosa y facil de implementar 
 4. Reloj -> Se asocia un bit de uso
 
-##Manejo del Conjunto Residente
+## Manejo del Conjunto Residente
 ▶ Con memoria virtual no es necesario tener todas las
 páginas de un proceso en memoria simultáneamente. Tampoco es posible
 ` El conjunto de páginas de un proceso en memoria principal es el conjunto residente `
@@ -69,7 +69,7 @@ pueden mantener mas procesos en memoria simultáneamente
 ▶ Si un proceso tiene un conjunto residente muy pequeño
 entonces la probabilidad de un fallo de página es mayor
 
-###Dos opciones para definir la cantidad de marcos de cada proceso
+### Dos opciones para definir la cantidad de marcos de cada proceso
 ▶ `Asignación Fija:` El número de marcos se define al
 cargarse el proceso y luego no puede variar. La cantidad
 exacta puede estar definida a nivel general o por el tipo de
@@ -101,7 +101,7 @@ Concepto: Es la más dinámica y la que usan la mayoría de los sistemas operati
 
 Ejemplo concreto: Tienes abierto tu entorno de programación y un videojuego de fondo. El entorno necesita cargar un nuevo módulo. El SO busca en toda la RAM, detecta que hay páginas del videojuego que llevan mucho tiempo sin usarse, se las quita y se las da al entorno. El tamaño de tu entorno creció (asignación variable) a expensas de achicar el espacio del juego (reemplazo global).
 
-##Políticas de Vaciado
+## Políticas de Vaciado
 En que momento escribir a disco páginas que han sido
 modificadas
 ▶ Vaciado a demanda: La página modificada se escribe
@@ -118,7 +118,7 @@ innecesariamente
 y otra de páginas sin modificar. Solo serán reemplazadas
 aquellas de la segunda lista
 
-##Control de Carga
+## Control de Carga
 Se refiere al control de la cantidad de procesos residentes en
 la memoria principal
 ▶ Cuando la cantidad de procesos es baja entonces la
@@ -129,7 +129,7 @@ pequeño
 ▶ Pero en este caso los conjuntos residentes pueden ser
 demasiado chicos lo que genera hiperpaginación
 
-##Suspencion de Procesos
+## Suspencion de Procesos
 ▶ Proceso con la menor prioridad
 ▶ Proceso con fallo de página
 ▶ Proceso con el conjunto residente mas pequeño
